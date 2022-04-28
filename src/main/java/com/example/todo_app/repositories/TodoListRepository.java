@@ -10,6 +10,9 @@ import java.util.List;
 @Repository
 public interface TodoListRepository extends JpaRepository<TodoList,Long> {
     @Override
-    List<TodoList> findAllById(Iterable<Long> iterable);
+    List<TodoList> findAll();
 
+    TodoList findByUsername(String username);
+
+    void deleteByUsername(String username);
 }
