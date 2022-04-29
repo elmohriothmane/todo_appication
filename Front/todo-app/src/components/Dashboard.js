@@ -1,44 +1,28 @@
 import React, { Component } from 'react'
-
+import TodoListItem from './TodoListItem/TodoListItem';
 
 class Dashboard extends Component {
   render() {
     return (
-      <div>
-          <nav className="navbar navbar-expand-sm navbar-dark bg-primary mb-4">
+        <div className="projects">
         <div className="container">
-            <a className="navbar-brand" href="Dashboard.html">
-                Todo list
-            </a>
-            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-nav">
-                <span className="navbar-toggler-icon" />
-            </button>
+            <div className="row">
+                <div className="col-md-12">
+                    <h1 className="display-4 text-center">Projects</h1>
+                    <br />
+                    <a href="ProjectForm.html" className="btn btn-lg btn-info">
+                        Create a Project
+                    </a>
+                    <br />
+                    <hr />
 
-            <div className="collapse navbar-collapse" id="mobile-nav">
-                <ul className="navbar-nav mr-auto">
-                    <li className="nav-item">
-                        <a className="nav-link" href="/dashboard">
-                            Dashboard
-                        </a>
-                    </li>
-                </ul>
+                    <TodoListItem/>
 
-                <ul className="navbar-nav ml-auto">
-                    <li className="nav-item">
-                        <a className="nav-link " href="register.html">
-                            Sign Up
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="login.html">
-                            Login
-                        </a>
-                    </li>
-                </ul>
+                </div>
             </div>
         </div>
-    </nav>
-      </div>
+    </div>
+
     )
   }
 }
