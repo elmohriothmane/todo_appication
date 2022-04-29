@@ -10,7 +10,7 @@ class TodoListItem extends Component {
         <div className="card card-body bg-light mb-3">
             <div className="row">
                 <div className="col-2">
-                    <span className="mx-auto">REACT</span>
+                    <span className="mx-auto">Premiere List</span>
                 </div>
                 <div className="col-lg-6 col-md-4 col-8">
                     <h3>Spring / React Project</h3>
@@ -20,17 +20,17 @@ class TodoListItem extends Component {
                     <ul className="list-group">
                         <a >
                             <li className="list-group-item board">
-                              <FontAwesomeIcon icon={faBars} /> Project Board
+                              <FontAwesomeIcon icon={faBars} /> List Board
                             </li>
                         </a>
                         <a >
                             <li className="list-group-item update">
-                            <FontAwesomeIcon icon={faEdit} /> Update Project Info
+                            <FontAwesomeIcon icon={faEdit} /> Update List Info
                             </li>
                         </a>
                         <a >
                             <li className="list-group-item delete">
-                            <FontAwesomeIcon icon={faDeleteLeft} /> elete Project
+                            <FontAwesomeIcon icon={faDeleteLeft} /> Delete List
                             </li>
                         </a>
                     </ul>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import CreateTodoLIstButton from './TodoListItem/CreateTodoLIstButton';
 import TodoListItem from './TodoListItem/TodoListItem';
 
 class Dashboard extends Component {
@@ -8,11 +9,9 @@ class Dashboard extends Component {
         <div className="container">
             <div className="row">
                 <div className="col-md-12">
-                    <h1 className="display-4 text-center">Projects</h1>
+                    <h1 className="display-4 text-center">Todo List</h1>
                     <br />
-                    <a href="ProjectForm.html" className="btn btn-lg btn-info">
-                        Create a Project
-                    </a>
+                        <CreateTodoLIstButton/>
                     <br />
                     <hr />
 
