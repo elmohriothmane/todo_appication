@@ -3,9 +3,13 @@ import Dashboard from './components/Dashboard';
 import Header from './components/Layout/Header';
 import {BrowserRouter as Router,Route,Routes} from "react-router-dom"
 import AddTodoList from './components/TodoListItem/AddTodoList';
+import store from "./strore"
+import {Provider} from "react-redux"
 
 function App() {
   return (
+
+    <Provider store={store}>
     <Router>
     <div className="App">
       <Header/>
@@ -17,6 +21,7 @@ function App() {
     </div>
 
     </Router>
+    </Provider>
   );
 }
 
