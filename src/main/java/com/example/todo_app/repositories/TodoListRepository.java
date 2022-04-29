@@ -12,7 +12,7 @@ public interface TodoListRepository extends JpaRepository<TodoList,Long> {
     @Override
     List<TodoList> findAll();
 
-    TodoList findByUsername(String username);
+    List<TodoList> findAllByUsername(String username);
 
     void deleteByUsername(String username);
 }

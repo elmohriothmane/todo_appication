@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlAttribute;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @AllArgsConstructor @NoArgsConstructor @Data
@@ -24,6 +26,9 @@ public class TodoList {
         private String username;
 
     private String description;
+
+    @OneToMany(cascade = CascadeType.REFRESH,fetch = FetchType.EAGER,mappedBy = "todoList",orphanRemoval = true)
+    private List<Task> tasks=new ArrayList<>();
 
 
 }
