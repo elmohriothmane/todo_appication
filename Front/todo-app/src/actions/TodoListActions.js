@@ -1,5 +1,6 @@
 import axios from "axios";
 import { GET_ERRORS } from "./types";
+import { GET_TODOLIST } from "./types";
 
 
 
@@ -20,4 +21,12 @@ export const createProject = (todolist, history) => async dispatch => {
       payload: err.response.data
     });
   }
+};
+
+export const getTodoLists = () => async dispatch => {
+  const res = await axios.get("http://localhost:8081/api/todolist/alltodolists");
+  dispatch({
+    type: GET_TODOLIST,
+    payload: res.data
+  });
 };

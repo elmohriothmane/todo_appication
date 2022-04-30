@@ -2,8 +2,21 @@ import React, { Component } from 'react'
 import CreateTodoLIstButton from './TodoListItem/CreateTodoLIstButton';
 import TodoListItem from './TodoListItem/TodoListItem';
 
+import { connect } from "react-redux";
+import { getTodoLists } from "../actions/TodoListActions";
+import PropTypes from "prop-types";
+
+
+
 class Dashboard extends Component {
+
+  componentDidMount() {
+        this.props.getTodoLists();
+  }
+  
   render() {
+
+    const { todolists } = this.props.todolist;
     return (
         <div className="projects">
         <div className="container">
@@ -15,7 +28,9 @@ class Dashboard extends Component {
                     <br />
                     <hr />
 
-                    <TodoListItem/>
+                    {todolists.map(todolist => (
+                    <TodoListItem key={todolist.id} todolist={todolist} />
+                    ))}
 
                 </div>
             </div>
@@ -26,4 +41,16 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard;
+Dashboard.propTypes = {
+    todolist: PropTypes.object.isRequired,
+    getTodoLists: PropTypes.func.isRequired
+  };
+
+const mapStateToProps = state => ({
+    todolist: state.todolist
+});
+
+
+export default connect(mapStateToProps,
+    { getTodoLists }
+)(Dashboard);
