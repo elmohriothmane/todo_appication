@@ -5,6 +5,7 @@ import {BrowserRouter as Router,Route,Routes} from "react-router-dom"
 import AddTodoList from './components/TodoListItem/AddTodoList';
 import store from "./strore"
 import {Provider} from "react-redux"
+import UpdateTodoList from './components/TodoListItem/UpdateTodoList';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Routes>
         <Route exact path="/dashboard" element={<Dashboard/>}/>
         <Route exact path="/addTodoList" element={<AddTodoList/>}/>
+        <Route exact path="/updateTodoList/:id" component={<UpdateTodoList/>} />
       </Routes>
       
     </div>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars,faEdit,faDeleteLeft} from '@fortawesome/free-solid-svg-icons'
+import { Link } from "react-router-dom";
 
 
 class TodoListItem extends Component {
@@ -24,11 +25,11 @@ class TodoListItem extends Component {
                               <FontAwesomeIcon icon={faBars} /> List Board
                             </li>
                         </a>
-                        <a >
+                        <Link to={`/updateTodoList/${todolist.id}`}>
                             <li className="list-group-item update">
                             <FontAwesomeIcon icon={faEdit} /> Update List Info
                             </li>
-                        </a>
+                        </Link>
                         <a >
                             <li className="list-group-item delete">
                             <FontAwesomeIcon icon={faDeleteLeft} /> Delete List
