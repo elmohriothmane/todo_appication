@@ -1,5 +1,10 @@
 import React, { Component } from 'react'
 
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { createProject } from "../../actions/TodoListActions";
+
+
 class AddTodoList extends Component {
 
   constructor(){
@@ -26,7 +31,7 @@ class AddTodoList extends Component {
         description:this.state.description,
       }
 
-      console.log(newTodoList);
+      this.props.createProject(newTodoList, this.props.history);
   }
   render() {
     return (
@@ -63,4 +68,12 @@ class AddTodoList extends Component {
   }
 }
 
-export default AddTodoList;
+
+AddTodoList.propTypes = {
+    createProject: PropTypes.func.isRequired
+  };
+
+export default connect(
+    null,
+    {  createProject }
+  )(AddTodoList);
