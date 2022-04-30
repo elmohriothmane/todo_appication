@@ -13,6 +13,8 @@ export const createProject = (todolist, history) => async dispatch => {
     return window.location.href = '/dashboard'
     
   } catch (err) {
+
+    console.log(err)
     dispatch({
       type: GET_ERRORS,
       payload: err.response.data

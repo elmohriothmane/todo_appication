@@ -3,6 +3,7 @@ package com.example.todo_app.controller;
 
 import com.example.todo_app.entities.Task;
 import com.example.todo_app.entities.TodoList;
+import com.example.todo_app.exceptions.ErrorResponse;
 import com.example.todo_app.repositories.TodoListRepository;
 import com.example.todo_app.services.TodoListService;
 import org.slf4j.LoggerFactory;
@@ -19,6 +20,7 @@ import java.util.logging.Logger;
 
 @RestController
 @RequestMapping("api/todolist")
+@CrossOrigin
 public class TodoListController {
 
     @Autowired
@@ -28,10 +30,20 @@ public class TodoListController {
 
 
     @PostMapping("")
-    public ResponseEntity<TodoList> createNewTodoList(@RequestBody TodoList todoList){
+    public ResponseEntity<?> createNewTodoList( @RequestBody TodoList todoList){
 
-        TodoList todoList1 = todoListService.saveOrUpdateTodoList(todoList);
-        return  new ResponseEntity<TodoList>(todoList1, HttpStatus.CREATED);
+        if( (!todoList.getListName().isEmpty()) && (todoList.getListName().isEmpty()) && (todoList.getDescription().isEmpty()) && (todoList.getListName().isEmpty())) {
+
+            TodoList todoList1 = todoListService.saveOrUpdateTodoList(todoList);
+            return  new ResponseEntity<TodoList>(todoList1, HttpStatus.CREATED);
+
+        }
+
+        ErrorResponse errorResponse = new ErrorResponse();
+        errorResponse.setMessage("To do Liste Name or description Not Found");
+        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+
+
     }
 
     @GetMapping("/{username}/list")

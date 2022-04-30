@@ -22,9 +22,10 @@ public class TodoList {
     @Column(nullable = false,length = 25)
     private String listName;
 
-    @Column(nullable = false,unique = true,updatable = false)
+    @Column(unique = true)
         private String username;
 
+    @Column(nullable = false)
     private String description;
 
     @OneToMany(cascade = CascadeType.REFRESH,fetch = FetchType.EAGER,mappedBy = "todoList",orphanRemoval = true)

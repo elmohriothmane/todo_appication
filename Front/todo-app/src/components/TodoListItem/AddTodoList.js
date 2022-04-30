@@ -12,11 +12,21 @@ class AddTodoList extends Component {
 
       this.state={
         listName:"",
-        description:""
+        description:"",
+        errors: {}
       }
 
       this.onChange=this.onChange.bind(this);
       this.onSubmit= this.onSubmit.bind(this);
+  }
+
+  //life cycle hooks
+  componentWillReceiveProps(nextProps) {
+
+    console.log(nextProps);
+    if (nextProps.errors) {
+      this.setState({ errors: nextProps.errors });
+    }
   }
 
   onChange(e){
@@ -34,6 +44,8 @@ class AddTodoList extends Component {
       this.props.createProject(newTodoList, this.props.history);
   }
   render() {
+
+    const { errors } = this.state;
     return (
         <div className="register">
         <div className="container">
@@ -47,6 +59,7 @@ class AddTodoList extends Component {
                                 value={this.state.listName}
                                 onChange={this.onChange}
                             />
+                             
                         </div>
                         
                         <br/>
@@ -57,7 +70,10 @@ class AddTodoList extends Component {
                         </div>
                         <br/>
 
+                        <p>{errors.message}</p>
+                        <br/>
                         <input type="submit" className="btn btn-primary btn-block mt-4" />
+                        
                     </form>
                 </div>
             </div>
@@ -70,10 +86,15 @@ class AddTodoList extends Component {
 
 
 AddTodoList.propTypes = {
-    createProject: PropTypes.func.isRequired
+    createProject: PropTypes.func.isRequired,
+    errors: PropTypes.object.isRequired
   };
 
+const mapStateToProps = state => ({
+    errors: state.errors
+  });
+
 export default connect(
-    null,
+    mapStateToProps,
     {  createProject }
   )(AddTodoList);
