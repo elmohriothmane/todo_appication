@@ -3,6 +3,8 @@ import React, { Component } from 'react'
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { createProject } from "../../actions/TodoListActions";
+import classnames from "classnames";
+
 
 
 class AddTodoList extends Component {
@@ -55,7 +57,13 @@ class AddTodoList extends Component {
                     <hr />
                     <form onSubmit={this.onSubmit}>
                         <div className="form-group">
-                            <input type="text" className="form-control form-control-lg " placeholder="Todo List Title" name="listName" 
+                            <input type="text" 
+
+                                className={classnames("form-control form-control-lg", {
+                                    "is-invalid": errors.message
+                                })}
+
+                                placeholder="Todo List Title" name="listName" 
                                 value={this.state.listName}
                                 onChange={this.onChange}
                             />
@@ -64,14 +72,20 @@ class AddTodoList extends Component {
                         
                         <br/>
                         <div className="form-group">
-                            <textarea className="form-control form-control-lg" placeholder="TodoList Description" name="description"
+                            <textarea 
+                             
+                             className={classnames("form-control form-control-lg", {
+                                    "is-invalid": errors.message
+                                })}
+                                
+                            placeholder="TodoList Description" name="description"
                             value={this.state.description}
                             onChange={this.onChange} ></textarea>
                         </div>
                         <br/>
 
-                        <p>{errors.message}</p>
-                        <br/>
+                        <p className="invalid">{errors.message}</p>
+                        <br/> 
                         <input type="submit" className="btn btn-primary btn-block mt-4" />
                         
                     </form>
