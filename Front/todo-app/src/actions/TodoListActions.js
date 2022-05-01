@@ -7,7 +7,6 @@ import { GET_TODOLISTS,GET_TODOLIST,DELETE_TODOLIST } from "./types";
 export const createProject = (todolist, history) => async dispatch => {
 
   try {
-
     console.log(todolist);
     const res = await axios.post("http://localhost:8081/api/todolist", todolist);
     return window.location.href = '/dashboard'
