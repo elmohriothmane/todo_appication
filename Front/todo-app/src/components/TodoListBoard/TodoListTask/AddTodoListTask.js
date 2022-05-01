@@ -16,7 +16,7 @@ class AddTodoListTask extends Component {
 
     constructor(props) {
         super(props);
-        const { id } = this.props;
+        const { id } = this.props.params;
     
         this.state = {
             title: "",
@@ -25,6 +25,27 @@ class AddTodoListTask extends Component {
             id:id,
             errors:{}
         };
+        this.onChange = this.onChange.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
+      }
+
+      onChange(e) {
+        this.setState({ [e.target.name]: e.target.value });
+      }
+
+      onSubmit(e) {
+        e.preventDefault();
+    
+        const newTask = {
+            title: this.state.title,
+            status: this.state.status,
+            date: this.state.date,
+        };
+        this.props.addTaskToTodoLIst(
+          this.state.id,
+          newTask,
+          this.props.history
+        );
       }
 
 
@@ -46,7 +67,9 @@ class AddTodoListTask extends Component {
                     <form onSubmit={this.onSubmit}>
                         <div className="form-group">
                             <input type="text" className="form-control form-control-lg" name="title" placeholder="Todo List Task Title"
-                              value={this.state.title} />
+                              value={this.state.title} 
+                              onChange={this.onChange}
+                              />
                         </div>
                         <br></br>
                         <div className="form-group">
@@ -55,7 +78,8 @@ class AddTodoListTask extends Component {
                         <br></br>
                         <div class="form-group">
                             <input type="date" class="form-control form-control-lg" name="date"
-                            value={this.state.date} /> 
+                            value={this.state.date}
+                            onChange={this.onChange} /> 
                         </div>
                         <br></br>
 
@@ -64,6 +88,7 @@ class AddTodoListTask extends Component {
                             className="form-control form-control-lg"
                             name="status"
                             value={this.state.status}
+                            onChange={this.onChange}
                         >
                             <option value="">Select Status</option>
                             <option value="TO_DO">TO DO</option>
@@ -91,4 +116,4 @@ AddTodoListTask.propTypes = {
   export default connect(
     null,
     { addTaskToTodoLIst }
-  )(AddTodoListTask);
+  )(withParams(AddTodoListTask));
