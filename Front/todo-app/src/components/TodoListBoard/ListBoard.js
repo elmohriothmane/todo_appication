@@ -2,6 +2,10 @@ import React, { Component } from 'react'
 import { Link, useParams } from "react-router-dom";
 import TodoListTask from './TodoListTask/TodoListTask';
 
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { getTasks } from "../../actions/TaskActions";
+
 
 
 
@@ -12,6 +16,11 @@ function withParams(Component) {
 
 
  class ListBoard extends Component {
+
+    componentDidMount() {
+        const { id } = this.props.params;
+        this.props.getTasks(id);
+      }
  
   render() {
 
@@ -31,4 +40,17 @@ function withParams(Component) {
   }
 }
 
-export default withParams(ListBoard);
+
+ListBoard.propTypes = {
+    tasks: PropTypes.object.isRequired,
+    getTasks: PropTypes.func.isRequired
+  };
+  
+  const mapStateToProps = state => ({
+    tasks: state.task.todolist_tasks
+  });
+  
+export default connect(
+    mapStateToProps,
+    { getTasks }
+)(withParams(ListBoard));
