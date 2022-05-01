@@ -28,11 +28,11 @@ class TodoListItem extends Component {
                 </div>
                 <div className="col-md-4 d-none d-lg-block">
                     <ul className="list-group">
-                        <a >
+                        <Link to={`/projectBoard/${todolist.id}`}>
                             <li className="list-group-item board">
                               <FontAwesomeIcon icon={faBars} /> List Board
                             </li>
-                        </a>
+                        </Link>
                         <Link to={`/updateTodoList/${todolist.id}`}>
                             <li className="list-group-item update">
                             <FontAwesomeIcon icon={faEdit} /> Update List Info

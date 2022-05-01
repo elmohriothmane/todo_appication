@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import CreateTodoLIstButton from './TodoListItem/CreateTodoLIstButton';
-import TodoListItem from './TodoListItem/TodoListItem';
+import CreateTodoLIstButton from './TodoList/CreateTodoLIstButton';
+import TodoListItem from './TodoList/TodoListItem';
 
 import { connect } from "react-redux";
 import { getTodoLists } from "../actions/TodoListActions";
