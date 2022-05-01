@@ -20,7 +20,7 @@ public class TodoList {
     private Long id;
 
     @Column(nullable = false,length = 25)
-    private String listName;
+        private String listName;
 
     @Column(unique = true)
         private String username;

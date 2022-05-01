@@ -2,9 +2,17 @@ import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars,faEdit,faDeleteLeft} from '@fortawesome/free-solid-svg-icons'
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { deleteTodoList } from "../../actions/TodoListActions";
+import PropTypes from "prop-types";
 
 
 class TodoListItem extends Component {
+
+  onDeleteClick = id => {
+        this.props.deleteTodoList(id);
+    };
+
   render() {
 
     const { todolist } = this.props;
@@ -31,7 +39,11 @@ class TodoListItem extends Component {
                             </li>
                         </Link>
                         <a >
-                            <li className="list-group-item delete">
+                            <li className="list-group-item delete"
+                            onClick={this.onDeleteClick.bind(
+                                this,
+                                todolist.id
+                            )}>
                             <FontAwesomeIcon icon={faDeleteLeft} /> Delete List
                             </li>
                         </a>
@@ -44,4 +56,11 @@ class TodoListItem extends Component {
   }
 }
 
-export default TodoListItem;
+TodoListItem.propTypes = {
+    deleteTodoList : PropTypes.func.isRequired
+  };
+  
+  export default connect(
+    null,
+    { deleteTodoList }
+  )(TodoListItem);

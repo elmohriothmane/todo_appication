@@ -26,13 +26,10 @@ public class TodoListController {
     @Autowired
     private TodoListService todoListService;
 
-
-
-
     @PostMapping("")
     public ResponseEntity<?> createNewTodoList( @RequestBody TodoList todoList){
 
-        if( (!todoList.getListName().isEmpty()) && (todoList.getListName().isEmpty()) && (todoList.getDescription().isEmpty()) && (todoList.getListName().isEmpty())) {
+        if( (todoList.getListName()!=null) && (!todoList.getListName().isEmpty()) && (todoList.getDescription()!=null) && (!todoList.getListName().isEmpty())) {
 
             TodoList todoList1 = todoListService.saveOrUpdateTodoList(todoList);
             return  new ResponseEntity<TodoList>(todoList1, HttpStatus.CREATED);
@@ -40,7 +37,7 @@ public class TodoListController {
         }
 
         ErrorResponse errorResponse = new ErrorResponse();
-        errorResponse.setMessage("To do Liste Name or description Not Found");
+        errorResponse.setMessage("To do Liste Name And Description Should Not be Empty");
         return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
 
 

@@ -17,7 +17,7 @@ function App() {
       <Routes>
         <Route exact path="/dashboard" element={<Dashboard/>}/>
         <Route exact path="/addTodoList" element={<AddTodoList/>}/>
-        <Route exact path="/updateTodoList/:id" component={<UpdateTodoList/>} />
+        <Route exact path="/updateTodoList/:id" element={<UpdateTodoList/>} />
       </Routes>
       
     </div>
