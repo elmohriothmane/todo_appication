@@ -7,6 +7,7 @@ import store from "./strore"
 import {Provider} from "react-redux"
 import UpdateTodoList from './components/TodoList/UpdateTodoList';
 import ListBoard from './components/TodoListBoard/ListBoard';
+import AddTodoListTask from './components/TodoListBoard/TodoListTask/AddTodoListTask';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route exact path="/addTodoList" element={<AddTodoList/>}/>
         <Route exact path="/updateTodoList/:id" element={<UpdateTodoList/>} />  
         <Route exact path="/projectBoard/:id" element={<ListBoard/>} />
+        <Route exact path="/addTodoListTask/:id" element={<AddTodoListTask/>} />
       </Routes>
       
     </div>

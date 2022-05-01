@@ -1,12 +1,26 @@
 import React, { Component } from 'react'
+import { Link, useParams } from "react-router-dom";
+
+
+
+
+function withParams(Component) {
+    return props => <Component {...props} params={useParams()} />;
+  }
+
+
 
  class ListBoard extends Component {
+ 
   render() {
+
+    const {id} = this.props.params;
+    console.log(id);
     return (
         <div className="container">
-        <a className="btn btn-primary mb-3">
+        <Link to={`/addTodoListTask/${id}`}  className="btn btn-primary mb-3">
             <i className="fas fa-plus-circle"> Create TODO List Task</i>
-        </a>
+        </Link>
         <br />
         <hr />
         <div className="container">
@@ -59,4 +73,4 @@ import React, { Component } from 'react'
   }
 }
 
-export default ListBoard;
+export default withParams(ListBoard);
