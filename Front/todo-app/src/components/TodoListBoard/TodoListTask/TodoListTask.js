@@ -41,7 +41,6 @@ class TodoListTask extends Component {
   render() {
 
     const { task } = this.props;
-    console.log(task)
 
     return (
                 <div className="card mb-1 bg-light">

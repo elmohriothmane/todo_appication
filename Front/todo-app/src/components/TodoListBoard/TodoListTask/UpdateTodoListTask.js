@@ -14,7 +14,6 @@ function withParams(Component) {
 class UpdateTodoListTask extends Component {
 
     componentDidMount() {
-        console.log(this.props)
         const { id } = this.props;
         this.props.getTaskItem( id, this.props.history);
       }
@@ -79,7 +78,6 @@ UpdateTodoListTask.propTypes = {
   };
   
   const mapStateToProps = state => {
-      console.log(state.todolist_task)
       return ({
         task: state.todolist_task
       });

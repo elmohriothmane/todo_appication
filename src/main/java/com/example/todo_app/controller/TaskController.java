@@ -21,7 +21,7 @@ public class TaskController {
     private TaskService taskService;
 
     @PostMapping("/{todoListID}")
-    public ResponseEntity<Task> addTasktoTodoList(@RequestBody Task task, @PathVariable(value = "todoListID") Long todoListID  ){
+    public ResponseEntity<?> addTasktoTodoList(@RequestBody Task task, @PathVariable(value = "todoListID") Long todoListID  ){
 
         Task task1=taskService.addTask(todoListID,task);
 
@@ -55,7 +55,7 @@ public class TaskController {
 
 
 
-
+        return new ResponseEntity<>("Task deleted", HttpStatus.ACCEPTED);
     }
 
     @GetMapping("/{todoListID}")

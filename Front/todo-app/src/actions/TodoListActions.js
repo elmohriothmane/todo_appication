@@ -1,19 +1,17 @@
 import axios from "axios";
 import { GET_ERRORS } from "./types";
-import { GET_TODOLISTS,GET_TODOLIST,DELETE_TODOLIST } from "./types";
+import { GET_TODOLISTS,GET_TODOLIST,DELETE_TODOLIST,DELETE_TODOLIST_TASK } from "./types";
 
 
 
 export const createProject = (todolist, history) => async dispatch => {
 
   try {
-    console.log(todolist);
     const res = await axios.post("http://localhost:8081/api/todolist", todolist);
     return window.location.href = '/dashboard'
     
   } catch (err) {
 
-    console.log(err)
     dispatch({
       type: GET_ERRORS,
       payload: err.response.data
@@ -45,7 +43,7 @@ export const deleteTodoList = id => async dispatch => {
   ){
     await axios.delete(`http://localhost:8081/api/todolist/${id}`);
     dispatch({
-      type: DELETE_TODOLIST,
+      type: DELETE_TODOLIST_TASK,
       payload: id
     });
   }

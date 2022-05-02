@@ -25,7 +25,6 @@ class AddTodoList extends Component {
   //life cycle hooks
   componentWillReceiveProps(nextProps) {
 
-    console.log(nextProps);
     if (nextProps.errors) {
       this.setState({ errors: nextProps.errors });
     }

@@ -37,7 +37,6 @@ function withParams(Component) {
 
 
       for (let i = 0; i < tasks.length; i++) {
-        console.log(tasks[i]);
   
         if (tasks[i].props.task.status === "TO_DO") {
             todoTasks.push(tasks[i]);
@@ -52,7 +51,6 @@ function withParams(Component) {
         }
       }
       
-    console.log(id);
     return (
         <div className="container">
         <Link to={`/addTodoListTask/${id}`}  className="btn  mb-3" style={{backgroundColor:'#282893',color:'white'}}>
