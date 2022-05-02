@@ -11,6 +11,7 @@ class TodoListItem extends Component {
 
   onDeleteClick = id => {
         this.props.deleteTodoList(id);
+        window.location.reload();
     };
 
   render() {
