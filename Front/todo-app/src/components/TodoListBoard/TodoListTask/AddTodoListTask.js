@@ -62,7 +62,7 @@ class AddTodoListTask extends Component {
                     </Link>
                     <br></br>
                     <br></br>
-                    <h4 className="display-4 text-center">Add /Update Todo List Task</h4>
+                    <h4 className="display-4 text-center">Add New Todo List Task</h4>
                     <br></br>
                     <form onSubmit={this.onSubmit}>
                         <div className="form-group">

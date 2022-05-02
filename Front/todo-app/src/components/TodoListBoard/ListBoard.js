@@ -54,7 +54,7 @@ function withParams(Component) {
     return (
         <div className="container">
         <Link to={`/addTodoListTask/${id}`}  className="btn  mb-3" style={{backgroundColor:'#282893',color:'white'}}>
-            <i className="fas fa-plus-circle"> Create TODO List Task</i>
+            <i className="fas fa-plus-circle"> Create New Task</i>
         </Link>
         <br />
         <hr />  
