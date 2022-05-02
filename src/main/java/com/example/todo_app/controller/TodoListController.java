@@ -47,7 +47,13 @@ public class TodoListController {
     public ResponseEntity<?> getAllTodoListByUsername(@PathVariable(value = "username") String username){
         List<TodoList> todoList1=todoListService.findAllTodoListByUsername(username);
 
+        if (todoList1 !=null)
         return  new ResponseEntity<List<TodoList>>(todoList1,HttpStatus.ACCEPTED);
+
+        ErrorResponse errorResponse = new ErrorResponse();
+        errorResponse.setMessage("To do List not found");
+        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+
 
     }
 
@@ -55,7 +61,15 @@ public class TodoListController {
     public ResponseEntity<?> getTodoListByID(@PathVariable(value = "todoListID") Long todoListID){
         TodoList todoList1=todoListService.findTodoListByID(todoListID);
 
-        return  new ResponseEntity<TodoList>(todoList1,HttpStatus.ACCEPTED);
+
+
+
+        if (todoList1 !=null)
+            return  new ResponseEntity<TodoList>(todoList1,HttpStatus.ACCEPTED);
+
+        ErrorResponse errorResponse = new ErrorResponse();
+        errorResponse.setMessage("To do List not found");
+        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
     }
 
     @GetMapping("/alltodolists")
@@ -75,7 +89,14 @@ public class TodoListController {
 
         List<Task> tasks = todoListService.findAllTasksByTodoListID(deleteTodoListById);
 
-        return new ResponseEntity<List<Task>>(tasks,HttpStatus.ACCEPTED);
+        if (tasks !=null)
+            return new ResponseEntity<List<Task>>(tasks,HttpStatus.ACCEPTED);
+
+        ErrorResponse errorResponse = new ErrorResponse();
+        errorResponse.setMessage("To do List not found");
+        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+
+
     }
 
 
