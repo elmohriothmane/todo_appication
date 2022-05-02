@@ -2,6 +2,7 @@ package com.example.todo_app.controller;
 
 
 import com.example.todo_app.entities.Task;
+import com.example.todo_app.entities.TodoList;
 import com.example.todo_app.services.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -34,6 +35,13 @@ public class TaskController {
     public ResponseEntity<?> deleteTask(@PathVariable(value = "taskId") Long id){
         taskService.deleteTaskById(id);
         return new ResponseEntity<String>("Task deleted",HttpStatus.ACCEPTED);
+    }
+
+    @GetMapping("/{todoListID}")
+    public ResponseEntity<?> getTodoLisTasktByID(@PathVariable(value = "taskId") Long taskId){
+        Task task=taskService.getTasktByID(taskId);
+
+        return  new ResponseEntity<Task>(task,HttpStatus.ACCEPTED);
     }
 
 

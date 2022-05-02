@@ -31,13 +31,16 @@ public class TaskService {
 
     public Task updateTaskById(Task updatedTask,Long ListId){
         Task task=taskRepository.getById(ListId);
-        task = updatedTask;
-
+        task.setStatus(updatedTask.getStatus());
         return taskRepository.save(task);
     }
 
     public void deleteTaskById(Long id){
         taskRepository.deleteById(id);
+    }
+
+    public Task getTasktByID(Long id){
+        return taskRepository.getById(id);
     }
 
 }

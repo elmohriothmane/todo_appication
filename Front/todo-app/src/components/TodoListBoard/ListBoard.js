@@ -25,6 +25,33 @@ function withParams(Component) {
   render() {
 
     const {id} = this.props.params;
+
+    const tasks = this.props.tasks.map(task => (
+        <TodoListTask key={task.id} task={task} />
+      ));
+
+
+      let todoTasks = [];
+      let inProgressTasks = [];
+      let doneTasks  = [];
+
+
+      for (let i = 0; i < tasks.length; i++) {
+        console.log(tasks[i]);
+  
+        if (tasks[i].props.task.status === "TO_DO") {
+            todoTasks.push(tasks[i]);
+        }
+  
+        if (tasks[i].props.task.status === "IN_PROGRESS") {
+            inProgressTasks.push(tasks[i]);
+        }
+  
+        if (tasks[i].props.task.status === "DONE") {
+            doneTasks.push(tasks[i]);
+        }
+      }
+      
     console.log(id);
     return (
         <div className="container">
@@ -33,7 +60,40 @@ function withParams(Component) {
         </Link>
         <br />
         <hr />  
-        <TodoListTask/>
+
+        <div className="container">
+        <div className="row">
+            <div className="col-md-4">
+                <div className="card text-center mb-2">
+                    <div className="card-header bg-secondary text-white">
+                        <h3>TO DO</h3>
+                    </div>
+                </div>
+
+                
+                {todoTasks}
+
+            </div>
+            <div className="col-md-4">
+                <div className="card text-center mb-2">
+                    <div className="card-header bg-primary text-white">
+                        <h3>In Progress</h3>
+                    </div>
+                </div>
+
+                {inProgressTasks}
+            </div>
+            <div className="col-md-4">
+                <div className="card text-center mb-2">
+                    <div className="card-header bg-success text-white">
+                        <h3>Done</h3>
+                    </div>
+                    {doneTasks}
+                </div>
+            </div>
+        </div>
+    </div>
+        
 
     </div>
     )

@@ -1,52 +1,88 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom';
+import { updateTaskItem,deleteTask} from "../../../actions/TaskActions";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
-export default class TodoListTask extends Component {
+
+
+class TodoListTask extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.onChange = this.onChange.bind(this);
+
+  }
+
+  onChange(e) {
+    const { task } = this.props;
+    
+    const updatedTask = {
+      id: task.id,
+      title: task.title,
+      status: e.target.value,
+
+    };
+    this.props.updateTaskItem(updatedTask);
+    window.location.reload();
+
+  }
+
+  onDeleteClick = id => {
+    this.props.deleteTask(id);
+    window.location.reload();
+  };
+  
+
+
   render() {
-    return (
-        <div className="container">
-        <div className="row">
-            <div className="col-md-4">
-                <div className="card text-center mb-2">
-                    <div className="card-header bg-secondary text-white">
-                        <h3>TO DO</h3>
-                    </div>
-                </div>
 
+    const { task } = this.props;
+    console.log(task)
+
+    return (
                 <div className="card mb-1 bg-light">
 
                    
                     <div className="card-body bg-light">
-                        <h5 className="card-title">Todo list title</h5>
+                        <h5 className="card-title">{task.title}</h5>
                         <p className="card-text text-truncate ">
-                        Todo list description
+                        {task.title}
                         </p>
-                        <a  className="btn btn-primary">
-                            View / Update
-                        </a>
+                        <select
+                            className="form-control form-control-lg"
+                            name="status"
+                            onChange={this.onChange}
+                        >
+                            <option value="">Update Status</option>
+                            <option value="TO_DO">TO DO</option>
+                            <option value="IN_PROGRESS">IN PROGRESS</option>
+                            <option value="DONE">DONE</option>
+                            
+                        </select> 
 
-                        <button className="btn btn-danger ms-4">
-                            Delete
+                        <button className="btn btn-danger ms-4"
+                         onClick={this.onDeleteClick.bind(
+                          this,
+                          task.id,
+                        )}
+                        >
+                        Delete
                         </button>
                     </div>
                 </div>
-
-            </div>
-            <div className="col-md-4">
-                <div className="card text-center mb-2">
-                    <div className="card-header bg-primary text-white">
-                        <h3>In Progress</h3>
-                    </div>
-                </div>
-            </div>
-            <div className="col-md-4">
-                <div className="card text-center mb-2">
-                    <div className="card-header bg-success text-white">
-                        <h3>Done</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     )
   }
 }
+
+
+TodoListTask.propTypes = {
+  updateTaskItem: PropTypes.func.isRequired,
+  deleteTask: PropTypes.func.isRequired,
+};
+
+export default connect(
+  null,
+  { updateTaskItem,deleteTask }
+)(TodoListTask);

@@ -22,6 +22,7 @@ function App() {
         <Route exact path="/updateTodoList/:id" element={<UpdateTodoList/>} />  
         <Route exact path="/projectBoard/:id" element={<ListBoard/>} />
         <Route exact path="/addTodoListTask/:id" element={<AddTodoListTask/>} />
+        <Route exact path="/updateTodoListTask/:idTask" element={<UpdateTodoList/>} />
       </Routes>
       
     </div>

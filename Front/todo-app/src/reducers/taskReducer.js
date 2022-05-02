@@ -1,7 +1,8 @@
 import {
     GET_TODOLIST_TASKS,
     GET_TODOLIST_TASK,
-    DELETE_TODOLIST_TASK
+    DELETE_TODOLIST_TASK,
+    UPDATE_TODOLIST_TASK
   } from "../actions/types";
   
   const initialState = {
@@ -21,6 +22,12 @@ import {
         };
   
       case GET_TODOLIST_TASK:
+        return {
+          ...state,
+          todolist_task: action.payload
+        };
+
+        case UPDATE_TODOLIST_TASK:
         return {
           ...state,
           todolist_task: action.payload

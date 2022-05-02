@@ -129,7 +129,6 @@ UpdateTodoList.propTypes = {
 
 const mapStateToProps = state =>{
 
-
   return ({
     todolist: state.todolist
   });
