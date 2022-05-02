@@ -61,7 +61,7 @@ img {
 }
 
 .form-control::placeholder {
-  color: #bbb !important;
+  color: rgb(136, 118, 118) !important;
 }
 
 .invalid {

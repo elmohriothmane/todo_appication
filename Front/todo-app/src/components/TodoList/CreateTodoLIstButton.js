@@ -7,7 +7,7 @@ const CreateTodoLIstButton = () => {
   return (
       
     <React.Fragment>
-        <Link to="/addTodoList" className="btn btn-lg btn-info">
+        <Link to="/addTodoList" className="btn btn-lg " style={{color:'#090f79',backgroundColor:'white'}}>
                         Create a List
         </Link>
 

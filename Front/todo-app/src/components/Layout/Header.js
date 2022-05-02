@@ -4,8 +4,8 @@ class Header extends Component {
   render() {
     return (
 
-        <nav className="navbar navbar-expand-sm navbar-dark bg-primary mb-4">
-        <div className="container">
+        <nav className="navbar navbar-expand-sm navbar-dark  mb-4" style={{backgroundColor:'#2e57a1'}}  >
+        <div className="container" >
             <a className="navbar-brand" href="Dashboard.html">
                 Todo lists
             </a>
@@ -22,18 +22,6 @@ class Header extends Component {
                     </li>
                 </ul>
 
-                <ul className="navbar-nav ml-auto">
-                    <li className="nav-item">
-                        <a className="nav-link " href="register.html">
-                            Sign Up
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="login.html">
-                            Login
-                        </a>
-                    </li>
-                </ul>
             </div>
         </div>
     </nav>
