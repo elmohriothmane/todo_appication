@@ -55,7 +55,7 @@ function withParams(Component) {
     console.log(id);
     return (
         <div className="container">
-        <Link to={`/addTodoListTask/${id}`}  className="btn btn-primary mb-3">
+        <Link to={`/addTodoListTask/${id}`}  className="btn  mb-3" style={{backgroundColor:'#282893',color:'white'}}>
             <i className="fas fa-plus-circle"> Create TODO List Task</i>
         </Link>
         <br />
@@ -65,7 +65,7 @@ function withParams(Component) {
         <div className="row">
             <div className="col-md-4">
                 <div className="card text-center mb-2">
-                    <div className="card-header bg-secondary text-white">
+                    <div className="card-header text-white" style={{backgroundColor:'#216b80'}}>
                         <h3>TO DO</h3>
                     </div>
                 </div>
@@ -76,7 +76,7 @@ function withParams(Component) {
             </div>
             <div className="col-md-4">
                 <div className="card text-center mb-2">
-                    <div className="card-header bg-primary text-white">
+                    <div className="card-header  text-white" style={{backgroundColor:'#282893'}}>
                         <h3>In Progress</h3>
                     </div>
                 </div>
@@ -85,7 +85,7 @@ function withParams(Component) {
             </div>
             <div className="col-md-4">
                 <div className="card text-center mb-2">
-                    <div className="card-header bg-success text-white">
+                    <div className="card-header  text-white" style={{backgroundColor:'#0a620c'}}>
                         <h3>Done</h3>
                     </div>
                     {doneTasks}

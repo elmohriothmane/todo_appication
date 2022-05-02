@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import { updateTaskItem,deleteTask} from "../../../actions/TaskActions";
+import { faCircle,faEdit,faDeleteLeft,faCalendar,faStickyNote} from '@fortawesome/free-solid-svg-icons'
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
 
@@ -46,10 +48,16 @@ class TodoListTask extends Component {
 
                    
                     <div className="card-body bg-light">
-                        <h5 className="card-title">{task.title}</h5>
+                        <div className="d-flex flex-row justify-content-between mb-1">
+                        <h5 className="card-title"><FontAwesomeIcon icon={faStickyNote} style={{fontSize:'0.8rem'}}/> {task.title}</h5>
+                        <p style={{fontSize:'0.8rem'}}>{task.date} <FontAwesomeIcon icon={faCalendar} style={{fontSize:'0.8rem'}}/> </p>
+                        </div>
+                        
                         <p className="card-text text-truncate ">
                         {task.title}
                         </p>
+
+                        <div className="d-flex flex-row justify-content-end mb-1">
                         <select
                             className="form-control form-control-lg"
                             name="status"
@@ -61,6 +69,7 @@ class TodoListTask extends Component {
                             <option value="DONE">DONE</option>
                             
                         </select> 
+                        <br></br>
 
                         <button className="btn btn-danger ms-4"
                          onClick={this.onDeleteClick.bind(
@@ -70,6 +79,9 @@ class TodoListTask extends Component {
                         >
                         Delete
                         </button>
+                          
+                        </div>
+                        
                     </div>
                 </div>
     )

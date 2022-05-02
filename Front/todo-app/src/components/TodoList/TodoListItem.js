@@ -28,7 +28,7 @@ class TodoListItem extends Component {
                 </div>
               </li>
               <li
-                className="list-group-item px-3 py-1 d-flex align-items-center flex-grow-1 border-0 bg-transparent">
+                className="list-group-item text-truncate  px-3 py-1 d-flex align-items-center flex-grow-1 border-0 bg-transparent">
                 <p className="lead fw-normal mb-0" style={{ color: 'white'}} >{todolist.listName}</p>
               </li>
               <li
