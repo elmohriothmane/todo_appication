@@ -72,9 +72,7 @@ class AddTodoListTask extends Component {
                               />
                         </div>
                         <br></br>
-                        <div className="form-group">
-                            <textarea className="form-control form-control-lg" placeholder="Task Description" name="description"></textarea>
-                        </div>
+                        
                         <br></br>
                         <div class="form-group">
                             <input type="date" class="form-control form-control-lg" name="date"
