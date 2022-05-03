@@ -52,9 +52,7 @@ class TodoListTask extends Component {
                         <p style={{fontSize:'0.8rem'}}>{task.date} <FontAwesomeIcon icon={faCalendar} style={{fontSize:'0.8rem'}}/> </p>
                         </div>
                         
-                        <p className="card-text text-truncate ">
-                        {task.title}
-                        </p>
+                        
 
                         <div className="d-flex flex-row justify-content-end mb-1">
                         <select
